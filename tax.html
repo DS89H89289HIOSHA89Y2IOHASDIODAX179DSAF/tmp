@@ -3,11 +3,23 @@
 <head>
   <title id="pageTitle"></title>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
     input[type="text"] {
       padding: 10px;
       margin: 10px;
-      width: 200px;
+      width: calc(100% - 20px);
+      box-sizing: border-box;
     }
 
     #result {
@@ -15,22 +27,19 @@
       margin: 10px;
     }
 
+    #additional, #disclaimer, #testText {
+      text-align: center;
+      margin: 10px;
+    }
+
     #additional {
-      padding: 14px;
       color: dodgerblue;
       font-weight: bold;
-      font-size: 18px;	
+      font-size: 18px;  
     }
 
-    #disclaimer {
-      padding: 10px;
-      color: orange; /* 橘色 */
-      font-weight: bold;
-    }
-
-    #testText {
-      padding: 10px;
-      color: orange; /* 道奇藍 */
+    #disclaimer, #testText {
+      color: orange;
       font-weight: bold;
     }
 
@@ -45,7 +54,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var pageTitle = document.getElementById('pageTitle');
-      var filename = decodeURI(window.location.pathname.split('/').pop().split('.')[0]); // 從URL中獲取檔名，去掉 .html
+      var filename = decodeURI(window.location.pathname.split('/').pop().split('.')[0]);
       document.title = filename;
       pageTitle.innerText = filename;
       document.getElementById('additional').innerText = filename;
