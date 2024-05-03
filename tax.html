@@ -13,6 +13,8 @@
 
     h2 {
       text-align: center;
+      font-size: 24px;
+      margin: 10px 0;
     }
 
     input[type="text"] {
@@ -20,16 +22,19 @@
       margin: 10px;
       width: calc(100% - 20px);
       box-sizing: border-box;
+      font-size: 16px;
     }
 
     #result {
       padding: 10px;
       margin: 10px;
+      font-size: 18px;
     }
 
     #additional, #disclaimer, #testText {
       text-align: center;
       margin: 10px;
+      font-size: 16px;
     }
 
     #additional {
@@ -49,6 +54,20 @@
 
     .taxFree {
       font-weight: bold;
+    }
+    
+    @media screen and (max-width: 600px) {
+      h2 {
+        font-size: 20px;
+      }
+      
+      input[type="text"] {
+        font-size: 14px;
+      }
+      
+      #result {
+        font-size: 16px;
+      }
     }
   </style>
   <script>
