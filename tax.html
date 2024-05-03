@@ -76,7 +76,13 @@
       var filename = decodeURI(window.location.pathname.split('/').pop().split('.')[0]);
       document.title = filename;
       pageTitle.innerText = filename;
-      document.getElementById('additional').innerText = filename;
+      var urlParams = new URLSearchParams(window.location.search);
+      var taxRate = urlParams.get('tax');
+      if (taxRate) {
+        document.getElementById('additional').innerText = filename + " - 稅率: " + taxRate;
+      } else {
+        document.getElementById('additional').innerText = filename;
+      }
     });
 
     function calculate() {
