@@ -79,9 +79,10 @@
       
       var urlParams = new URLSearchParams(window.location.search);
       var taxRate = urlParams.get('tax');
+      var taxLabel = urlParams.get('taxLabel') || 'tax - 稅率:';
       
       if (taxRate) {
-        var taxTitle = '稅率: ' + (taxRate * 100) + '%';
+        var taxTitle = taxLabel + ' ' + (taxRate * 100) + '%';
         document.getElementById('additional').innerText = filename + " - " + taxTitle;
         document.getElementById('disclaimer').innerText = '超過5,000扣所得稅' + (taxRate * 100) + '%及印花稅4%';
       } else {
