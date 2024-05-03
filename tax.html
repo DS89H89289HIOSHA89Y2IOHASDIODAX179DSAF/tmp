@@ -76,10 +76,14 @@
       var filename = decodeURI(window.location.pathname.split('/').pop().split('.')[0]);
       document.title = filename;
       pageTitle.innerText = filename;
+      
       var urlParams = new URLSearchParams(window.location.search);
       var taxRate = urlParams.get('tax');
+      
       if (taxRate) {
-        document.getElementById('additional').innerText = filename + " - 稅率: " + taxRate;
+        var taxTitle = '稅率: ' + (taxRate * 100) + '%';
+        document.getElementById('additional').innerText = filename + " - " + taxTitle;
+        document.getElementById('disclaimer').innerText = '超過5,000扣所得稅' + (taxRate * 100) + '%及印花稅4%';
       } else {
         document.getElementById('additional').innerText = filename;
       }
@@ -94,7 +98,7 @@
           result = '<span class="taxFree">免稅</span>';
           document.getElementById('result').innerHTML = result;
         } else {
-          var tax = Math.round(input * 0.20 + input * 0.04);
+          var tax = Math.round(input * taxRate);
           var taxable = input - tax;
           taxable = taxable.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           tax = tax.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
