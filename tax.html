@@ -31,7 +31,7 @@
       font-size: 18px;
     }
 
-    #additional, #disclaimer, #testText {
+    #additional, #disclaimer, #testText, #address {
       text-align: center;
       margin: 10px;
       font-size: 16px;
@@ -60,6 +60,10 @@
       padding: 10px;
       margin: 5px;
       font-size: 16px;
+    }
+
+    #address a {
+      color: black;
     }
 
     @media screen and (max-width: 600px) {
@@ -129,6 +133,9 @@
 <body>
   <h2 id="pageTitle"></h2>
   <div id="additional"></div>
+  <div id="address">
+    <a href="#">地址：某某街道123號</a>
+  </div>
   <div id="disclaimer">超過5,000扣所得稅20%及印花稅4%</div>
   <div id="testText">*以財政部公告為準*</div>
   <input type="text" id="number" oninput="calculate()" placeholder="請輸入中獎金額(數字)">
