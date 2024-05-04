@@ -89,12 +89,17 @@
       
       var urlParams = new URLSearchParams(window.location.search);
       var taxLabel = urlParams.get('taxLabel');
+      var address = urlParams.get('address');
       
       if (taxLabel) {
         document.getElementById('additional').innerText = taxLabel;
         document.title = taxLabel;
       } else {
         document.getElementById('additional').innerText = filename;
+      }
+
+      if (address) {
+        document.getElementById('address').innerHTML = '<a href="#">地址：' + address + '</a>';
       }
     });
 
