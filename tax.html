@@ -119,11 +119,11 @@
           result = '<span class="taxFree">免稅</span>';
           document.getElementById('result').innerHTML = result;
         } else {
-          var tax = Math.round(input * 0.20 + input * 0.04);
+          var tax = Math.round(input * 0.796);
           var taxable = input - tax;
           taxable = taxable.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           tax = tax.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-          result = '稅後(實得)：' + taxable + '<br>應稅：' + tax;
+          result = '稅後(實得)：' + tax+ '<br>應稅：' + taxable;
           document.getElementById('result').innerHTML = result;
         }
       } else {
