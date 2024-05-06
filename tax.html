@@ -58,9 +58,11 @@
     }
 
     button {
-      padding: 10px;
+      padding: 20px; /* 調整按鈕的內邊距 */
       margin: 5px;
       font-size: 16px;
+      width: 80px; /* 調整按鈕的寬度 */
+      height: 60px; /* 調整按鈕的高度 */
     }
 
     #address {
@@ -147,21 +149,4 @@
   <div id="additional"></div>
   <div id="address"></div>
   <div id="disclaimer">超過5,000扣所得稅20%及印花稅4%</div>
-  <div id="testText">*以財政部公告為準*</div>
-  <input type="text" id="number" oninput="calculate()" placeholder="請輸入中獎金額(數字)">
-  <div>
-    <button onclick="appendToInput('1')">1</button>
-    <button onclick="appendToInput('2')">2</button>
-    <button onclick="appendToInput('3')">3</button>
-    <button onclick="appendToInput('4')">4</button>
-    <button onclick="appendToInput('5')">5</button>
-    <button onclick="appendToInput('6')">6</button>
-    <button onclick="appendToInput('7')">7</button>
-    <button onclick="appendToInput('8')">8</button>
-    <button onclick="appendToInput('9')">9</button>
-    <button onclick="appendToInput('0')">0</button>
-    <button onclick="clearInput()">清除</button>
-  </div>
-  <div id="result"></div>
-</body>
-</html>
+  <div
