@@ -321,34 +321,51 @@
 <script>
     var selectedButtons = [];
 
-    function toggleButton(button) {
-                if (button.classList.contains('selected')) {
-                    // Deselect button
-                    button.classList.remove('selected');
-                    var index = selectedButtons.indexOf(button.textContent);
-                    if (index !== -1) {
-                        selectedButtons.splice(index, 1);
-                    }
-                } else {
-                    // Check if already 6 buttons selected
-                    if (selectedButtons.length < 6) {
-                        // Select button
-                        button.classList.add('selected');
-                        selectedButtons.push(button.textContent);
-                    }
-                }
-                checkNumbers();
-            }
+  function toggleButton(button) {
+    if (button.classList.contains('selected')) {
+        // Deselect button
+        button.classList.remove('selected');
+        var index = selectedButtons.indexOf(button.textContent);
+        if (index !== -1) {
+            selectedButtons.splice(index, 1);
+        }
+    } else {
+        // Check if already 6 buttons selected
+        if (selectedButtons.length < 6) {
+            // Select button
+            button.classList.add('selected');
+            selectedButtons.push(button.textContent);
+        }
+    }
+    
+    // Check if this button was clicked for the first time
+    if (button.getAttribute('data-clicked') === 'true') {
+        // Second click, revert to original style
+        button.style.backgroundColor = '#ffffff';
+        button.style.color = '#007bff';
+        button.setAttribute('data-clicked', 'false');
+    } else {
+        // First click, change style
+        button.style.backgroundColor = '#007bff';
+        button.style.color = '#ffffff';
+        button.setAttribute('data-clicked', 'true');
+    }
+
+    checkNumbers();
+	}
 
     function clearSelection() {
-        // Deselect all buttons
-        var buttons = document.querySelectorAll('.button');
-        buttons.forEach(function(button) {
-            button.classList.remove('selected');
-        });
-        selectedButtons = [];
-        checkNumbers();
-    }
+    // Deselect all buttons
+    var buttons = document.querySelectorAll('.button');
+    buttons.forEach(function(button) {
+        button.classList.remove('selected');
+        button.style.backgroundColor = '#ffffff';
+        button.style.color = '#007bff';
+        button.setAttribute('data-clicked', 'false');
+    });
+    selectedButtons = [];
+    checkNumbers();
+}
 
    function checkNumbers() {
     var count = 0;
