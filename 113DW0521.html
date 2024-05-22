@@ -322,23 +322,23 @@
     var selectedButtons = [];
 
     function toggleButton(button) {
-        if (button.classList.contains('selected')) {
-            // Deselect button
-            button.classList.remove('selected');
-            var index = selectedButtons.indexOf(button.textContent);
-            if (index !== -1) {
-                selectedButtons.splice(index, 1);
+                if (button.classList.contains('selected')) {
+                    // Deselect button
+                    button.classList.remove('selected');
+                    var index = selectedButtons.indexOf(button.textContent);
+                    if (index !== -1) {
+                        selectedButtons.splice(index, 1);
+                    }
+                } else {
+                    // Check if already 6 buttons selected
+                    if (selectedButtons.length < 6) {
+                        // Select button
+                        button.classList.add('selected');
+                        selectedButtons.push(button.textContent);
+                    }
+                }
+                checkNumbers();
             }
-        } else {
-            // Check if already 6 buttons selected
-            if (selectedButtons.length < 6) {
-                // Select button
-                button.classList.add('selected');
-                selectedButtons.push(button.textContent);
-            }
-        }
-        checkNumbers();
-    }
 
     function clearSelection() {
         // Deselect all buttons
