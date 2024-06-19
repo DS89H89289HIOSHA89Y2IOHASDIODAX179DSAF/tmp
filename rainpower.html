@@ -23,6 +23,7 @@
         }
         h1 {
             color: #333;
+            font-size: 32px; /* 默认字体大小 */
         }
         p {
             font-size: 18px;
@@ -48,6 +49,31 @@
         }
         a:hover {
             background-color: #0056b3;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
