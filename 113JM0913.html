@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>開獎查詢器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+        }
+        .button {
+            margin: 2px;
+            padding: 10px 12px;
+            background-color: #ffffff;
+            color: #007bff;
+            border: 1px solid #007bff;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .button.selected {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        .button.clear {
+            background-color: #ffffff;
+            color: #ff0000;
+            border-color: #ff0000;
+        }
+        .button.clear:hover {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+        .button:hover {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .info {
+            margin-top: 20px;
+            font-size: 16px;
+            background-color: #ffff99;
+            color: #ff0000;
+            padding: 10px;
+        }
+        .info.bbb {
+            background-color: #ffff99;
+            color: #ff0000;
+            padding: 10px;
+        }
+        .info.ccc {
+            background-color: #ffff99;
+            color: #ff0000;
+            padding: 10px;
+        }
+        .info.ddd {
+            background-color: #ffff99;
+            color: #ff0000;
+            padding: 10px;
+        }
+        .lottery-numbers {
+            margin-top: 20px;
+            text-align: center; /* 將文本置中 */
+        }
+        .lottery-numbers p {
+            margin: 5px 0;
+        }
+        @media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+    	}    
+    
+}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>開獎查詢器</h1>
+    <p>點擊按鈕查詢與下方的號碼相同的數量：</p>
+    <div class="info">最終獎號仍以台彩公告為準</div>
+    <div class="info bbb">富通樂台彩投注站</div>
+    <div class="info ccc">台中市 潭子區 雅潭路一段54號</div>
+    <div class="info ddd">期別：1130913</div>
+    <!-- Buttons -->
+    <div class="buttons">
+        <!-- Generate buttons from 01 to 49 -->
+        <script>
+            // Sample lottery numbers
+         var lotteryNumbers = [
+    ['16', '17', '25', '27', '46', '48'],
+    ['08', '22', '30', '39', '43', '48'],
+    ['08', '15', '20', '35', '39', '42'],
+    ['20', '21', '23', '40', '44', '46'],
+    ['07', '17', '22', '26', '40', '45'],
+    ['06', '14', '28', '31', '33', '46'],
+    ['02', '06', '11', '34', '37', '43'],
+    ['01', '09', '12', '15', '18', '43'],
+    ['03', '05', '07', '08', '21', '22'],
+    ['06', '07', '31', '34', '43', '48'],
+    ['02', '16', '28', '39', '47', '48'],
+    ['07', '08', '14', '26', '33', '41'],
+    ['01', '03', '16', '18', '31', '41'],
+    ['12', '17', '37', '42', '45', '48'],
+    ['06', '08', '11', '16', '20', '39'],
+    ['06', '11', '24', '25', '41', '46'],
+    ['02', '05', '14', '17', '30', '36'],
+    ['03', '11', '22', '29', '30', '45'],
+    ['12', '13', '24', '30', '34', '40'],
+    ['18', '20', '23', '24', '34', '35'],
+    ['01', '02', '03', '23', '41', '46'],
+    ['04', '26', '29', '39', '43', '45'],
+    ['03', '06', '11', '16', '27', '48'],
+    ['04', '16', '25', '35', '38', '45'],
+    ['03', '13', '14', '21', '27', '36'],
+    ['04', '13', '15', '23', '30', '49'],
+    ['12', '19', '22', '32', '43', '49'],
+    ['03', '14', '21', '22', '31', '44'],
+    ['06', '09', '21', '39', '43', '44'],
+    ['07', '16', '17', '23', '29', '42'],
+    ['04', '05', '27', '36', '39', '40'],
+    ['07', '19', '26', '31', '35', '37'],
+    ['06', '24', '35', '39', '41', '44'],
+    ['11', '25', '31', '32', '33', '48'],
+    ['10', '13', '29', '30', '39', '45'],
+    ['13', '39', '40', '42', '44', '46'],
+    ['01', '12', '13', '37', '44', '49'],
+    ['04', '30', '32', '37', '43', '45'],
+    ['01', '09', '12', '25', '45', '49'],
+    ['03', '06', '21', '32', '34', '38'],
+    ['05', '06', '13', '20', '23', '45'],
+    ['08', '37', '38', '41', '45', '46'],
+    ['05', '21', '34', '36', '39', '46'],
+    ['08', '21', '25', '42', '46', '49'],
+    ['09', '16', '17', '25', '40', '42'],
+    ['11', '15', '24', '28', '35', '44'],
+    ['07', '08', '09', '20', '21', '44'],
+    ['02', '12', '21', '30', '32', '34'],
+    ['02', '29', '32', '44', '45', '49'],
+    ['18', '21', '30', '36', '37', '39'],
+    ['03', '05', '08', '09', '14', '40'],
+    ['05', '10', '11', '16', '20', '40'],
+    ['02', '07', '10', '11', '12', '17']
+];
+            for (var i = 1; i <= 49; i++) {
+                var buttonText = (i < 10) ? '0' + i : i;
+                document.write('<button class="button" onclick="toggleButton(this)">' + buttonText + '</button>');
+            }
+            // Add the clear button
+            document.write('<button class="button clear" onclick="clearSelection()">清除</button>');
+        </script>
+    </div>
+    <!-- Result -->
+    <div class="result" id="result"></div>
+    <!-- Lottery Numbers -->
+    <div class="lottery-numbers">
+   <p>01: 16、17、25、27、46、48</p>
+<p>02: 08、22、30、39、43、48</p>
+<p>03: 08、15、20、35、39、42</p>
+<p>04: 20、21、23、40、44、46</p>
+<p>05: 07、17、22、26、40、45</p>
+<p>06: 06、14、28、31、33、46</p>
+<p>07: 02、06、11、34、37、43</p>
+<p>08: 01、09、12、15、18、43</p>
+<p>09: 03、05、07、08、21、22</p>
+<p>10: 06、07、31、34、43、48</p>
+<p>11: 02、16、28、39、47、48</p>
+<p>12: 07、08、14、26、33、41</p>
+<p>13: 01、03、16、18、31、41</p>
+<p>14: 12、17、37、42、45、48</p>
+<p>15: 06、08、11、16、20、39</p>
+<p>16: 06、11、24、25、41、46</p>
+<p>17: 02、05、14、17、30、36</p>
+<p>18: 03、11、22、29、30、45</p>
+<p>19: 12、13、24、30、34、40</p>
+<p>20: 18、20、23、24、34、35</p>
+<p>21: 01、02、03、23、41、46</p>
+<p>22: 04、26、29、39、43、45</p>
+<p>23: 03、06、11、16、27、48</p>
+<p>24: 04、16、25、35、38、45</p>
+<p>25: 03、13、14、21、27、36</p>
+<p>26: 04、13、15、23、30、49</p>
+<p>27: 12、19、22、32、43、49</p>
+<p>28: 03、14、21、22、31、44</p>
+<p>29: 06、09、21、39、43、44</p>
+<p>30: 07、16、17、23、29、42</p>
+<p>31: 04、05、27、36、39、40</p>
+<p>32: 07、19、26、31、35、37</p>
+<p>33: 06、24、35、39、41、44</p>
+<p>34: 11、25、31、32、33、48</p>
+<p>35: 10、13、29、30、39、45</p>
+<p>36: 13、39、40、42、44、46</p>
+<p>37: 01、12、13、37、44、49</p>
+<p>38: 04、30、32、37、43、45</p>
+<p>39: 01、09、12、25、45、49</p>
+<p>40: 03、06、21、32、34、38</p>
+<p>41: 05、06、13、20、23、45</p>
+<p>42: 08、37、38、41、45、46</p>
+<p>43: 05、21、34、36、39、46</p>
+<p>44: 08、21、25、42、46、49</p>
+<p>45: 09、16、17、25、40、42</p>
+<p>46: 11、15、24、28、35、44</p>
+<p>47: 07、08、09、20、21、44</p>
+<p>48: 02、12、21、30、32、34</p>
+<p>49: 02、29、32、44、45、49</p>
+<p>50: 18、21、30、36、37、39</p>
+<p>51: 03、05、08、09、14、40</p>
+<p>52: 05、10、11、16、20、40</p>
+<p>53: 02、07、10、11、12、17</p>
+    </div>
+</div>
+
+<script>
+    var selectedButtons = [];
+
+  function toggleButton(button) {
+    if (button.classList.contains('selected')) {
+        // Deselect button
+        button.classList.remove('selected');
+        var index = selectedButtons.indexOf(button.textContent);
+        if (index !== -1) {
+            selectedButtons.splice(index, 1);
+        }
+    } else {
+        // Check if already 6 buttons selected
+        if (selectedButtons.length < 6) {
+            // Select button
+            button.classList.add('selected');
+            selectedButtons.push(button.textContent);
+        }
+    }
+    
+    // Check if this button was clicked for the first time
+    if (button.getAttribute('data-clicked') === 'true') {
+        // Second click, revert to original style
+        button.style.backgroundColor = '#ffffff';
+        button.style.color = '#007bff';
+        button.setAttribute('data-clicked', 'false');
+    } else {
+        // First click, change style
+        button.style.backgroundColor = '#007bff';
+        button.style.color = '#ffffff';
+        button.setAttribute('data-clicked', 'true');
+    }
+
+    checkNumbers();
+	}
+
+    function clearSelection() {
+    // Deselect all buttons
+    var buttons = document.querySelectorAll('.button');
+    buttons.forEach(function(button) {
+        button.classList.remove('selected');
+        button.style.backgroundColor = '#ffffff';
+        button.style.color = '#007bff';
+        button.setAttribute('data-clicked', 'false');
+    });
+    selectedButtons = [];
+    checkNumbers();
+}
+
+   function checkNumbers() {
+    var count = 0;
+    if (selectedButtons.length === 0) {
+        count = 0;
+    } else {
+        for (var i = 0; i < lotteryNumbers.length; i++) {
+            var matchCount = 0;
+            for (var j = 0; j < selectedButtons.length; j++) {
+                if (lotteryNumbers[i].indexOf(selectedButtons[j]) !== -1) {
+                    matchCount++;
+                }
+            }
+            if (matchCount === selectedButtons.length) {
+                count++;
+            }
+        }
+    }
+    document.getElementById('result').innerText = "與下方的號碼相同的數量為：" + count + " 組";
+}
+</script>
+
+</body>
+</html>
