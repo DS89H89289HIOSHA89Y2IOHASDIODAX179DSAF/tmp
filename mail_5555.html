@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>發送郵件</title>
   <script>
-    window.onload = function() {
-      // 在頁面加載後觸發 mailto 行為
-      window.location.href = "mailto:vickychiang721@gmail.com?subject=合作提案&body=您好，我有一個合作提案想與您討論。";
-      
-      // 稍等 1 秒鐘後關閉網頁
-      setTimeout(function() {
+    window.onload = function() {  
+      window.location.href = "mailto:vickychiang721@gmail.com?subject=合作提案&body=您好，我有一個合作提案想與您討論。";    
+      setTimeout(function() 
+{
         window.close();
-      }, 1000); // 1 秒後關閉
+      }, 300);
     };
   </script>
 </head>
